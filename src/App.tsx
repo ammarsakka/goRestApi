@@ -1,11 +1,11 @@
-import React from 'react';
+import { Body } from './component/Body';
+import { Header } from './component/Header';
 
 export const App = () => {
   return (
-    <div className="flex justify-center items-center min-h-screen">
-      <p className='text-4xl text-black font-bold'>
-        Hello World
-      </p>
+    <div className="flex flex-col items-center min-h-screen bg-slate-100 dark:bg-zinc-900">
+      <Header />
+      <Body />
     </div>
   );
 }
