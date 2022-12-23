@@ -46,7 +46,11 @@ export const Pagination = ({ pagination, currentPage, handlePage }: props) => {
                 {
                     currentPage > 2 &&
                     <li>
-                        <span>...</span>
+                        <span
+                            className='p-4 text-lg w-10 h-10 flex justify-center items-center rounded-full'
+                        >
+                            ...
+                        </span>
                     </li>
                 }
                 {
@@ -71,7 +75,11 @@ export const Pagination = ({ pagination, currentPage, handlePage }: props) => {
                 {
                     currentPage < (pagination - 4) &&
                     <li>
-                        <span>...</span>
+                        <span
+                            className='p-4 text-lg w-10 h-10 flex justify-center items-center rounded-full'
+                        >
+                            ...
+                        </span>
                     </li>
                 }
                 {

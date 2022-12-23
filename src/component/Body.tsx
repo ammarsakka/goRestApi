@@ -11,7 +11,7 @@ export const Body = () => {
 
     const handlePosts = useCallback((page = 1) => {
         axios.get(
-            `https://gorest.co.in/public/v2/posts?page=${page}&per_page=10`,
+            `https://gorest.co.in/public/v2/posts?page=${page}&per_page=5`,
             {
                 headers: {
                     "Content-Type": "application/json"
@@ -39,11 +39,9 @@ export const Body = () => {
     return (
         <div className="text-black dark:text-white w-full max-w-7xl">
             <h2 className="text-4xl font-bold tracking-wider capitalize text-center my-4">posts</h2>
-            <div className="p-4 flex gap-4">
-                <div className="w-1/3">
-
-                </div>
-                <div className="w-2/3">
+            <div className="p-4">
+                <p className='my-2 capitalize text-right'>page {currentPage}/{pagination}</p>
+                <div>
                     <Posts posts={posts} />
                     {
                         pagination &&
