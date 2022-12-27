@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Delete } from "./Delete"
+import { Update } from './Update'
 
 interface props {
     post: {
@@ -13,6 +14,7 @@ interface props {
 
 export const Post = ({ post, reload }: props) => {
     const [open, setOpen] = useState(false)
+    const [edit, setEdit] = useState(false)
 
     return (
         <div className='shadow p-2 rounded border'>
@@ -23,10 +25,11 @@ export const Post = ({ post, reload }: props) => {
                 {post.body}
             </p>
             <div className="mt-4 mb-2 flex items-center gap-4">
-                <button className="py-2 px-4 uppercase bg-green-500 rounded cursor-pointer hover:bg-green-600">edit</button>
+                <button className="py-2 px-4 uppercase bg-green-500 rounded cursor-pointer hover:bg-green-600" onClick={() => { setEdit(true) }}>edit</button>
                 <button className="py-2 px-4 uppercase bg-red-500 rounded cursor-pointer hover:bg-red-600" onClick={() => { setOpen(true) }}>delete</button>
             </div>
             <Delete post={post} open={open} setOpen={setOpen} reload={reload} />
+            <Update post={post} open={edit} setOpen={setEdit} reload={reload} />
         </div>
     )
 }
