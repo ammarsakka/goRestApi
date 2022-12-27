@@ -2,12 +2,15 @@ import { useMemo, useState, useCallback, useEffect } from 'react'
 import axios from 'axios'
 import { Posts } from "./Posts"
 import { Pagination } from './Pagination'
+import { BiSearchAlt } from 'react-icons/bi'
 
 export const Body = () => {
-    const [posts, setPosts] = useState([])
-    const [list, setList] = useState([])
+    const [posts, setPosts] = useState<any[]>([])
+    const [list, setList] = useState<any[]>([])
     const [pagination, setPagination] = useState(0)
     const [currentPage, setCurrentPage] = useState(1)
+
+    const [search, setSearch] = useState('')
 
     const handlePosts = useCallback((page = 1) => {
         axios.get(
@@ -36,10 +39,23 @@ export const Body = () => {
         handlePosts(page)
     }
 
+    useEffect(() => {
+        search ?
+            setPosts(list.filter((items) => items.title.includes(search)))
+            :
+            setPosts(list)
+    }, [search])
+
     return (
         <div className="text-black dark:text-white w-full max-w-7xl">
             <h2 className="text-4xl font-bold tracking-wider capitalize text-center my-4">posts</h2>
             <div className="p-4">
+                <div className='flex justify-center'>
+                    <div className='flex items-center gap-2 bg-white py-2 px-4 rounded-full text-black'>
+                        <input type="text" placeholder='Search' onChange={e => setSearch(e.target.value)} value={search} className='outline-none border-0' />
+                        <button><BiSearchAlt /></button>
+                    </div>
+                </div>
                 <p className='my-2 capitalize text-right'>page {currentPage}/{pagination}</p>
                 <div>
                     <Posts posts={posts} />

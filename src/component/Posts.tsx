@@ -1,10 +1,10 @@
 import { Post } from './Post'
 
-interface porps {
-    posts: never[]
+interface props {
+    posts: any[],
 }
 
-export const Posts = ({ posts }: porps) => {
+export const Posts = ({ posts }: props) => {
 
     return (
         <div className='grid grid-cols-1 gap-2'>

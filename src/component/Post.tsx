@@ -17,6 +17,10 @@ export const Post = ({ post }: props) => {
             <p className="tracking-wider">
                 {post.body}
             </p>
+            <div className="mt-4 mb-2 flex items-center gap-4">
+                <button className="py-2 px-4 uppercase bg-green-500 rounded cursor-pointer hover:bg-green-600">edit</button>
+                <button className="py-2 px-4 uppercase bg-red-500 rounded cursor-pointer hover:bg-red-600">delete</button>
+            </div>
         </div>
     )
 }
