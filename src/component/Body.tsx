@@ -46,6 +46,10 @@ export const Body = () => {
             setPosts(list)
     }, [search])
 
+    const reload = () => {
+        handlePosts()
+    }
+
     return (
         <div className="text-black dark:text-white w-full max-w-7xl">
             <h2 className="text-4xl font-bold tracking-wider capitalize text-center my-4">posts</h2>
@@ -58,7 +62,7 @@ export const Body = () => {
                 </div>
                 <p className='my-2 capitalize text-right'>page {currentPage}/{pagination}</p>
                 <div>
-                    <Posts posts={posts} />
+                    <Posts posts={posts} reload={reload} />
                     {
                         pagination &&
                         <Pagination pagination={pagination} currentPage={currentPage} handlePage={handlePage} />
