@@ -58,8 +58,8 @@ export const Body = () => {
                 <h2 className="text-4xl font-bold tracking-wider capitalize text-center my-4">posts</h2>
                 <div className="p-4">
                     <div className='flex justify-center'>
-                        <div className='flex items-center gap-2 bg-white py-2 px-4 rounded-full text-black'>
-                            <input type="text" placeholder='Search' onChange={e => setSearch(e.target.value)} value={search} className='outline-none border-0' />
+                        <div className='flex items-center gap-2 bg-white py-2 px-4 rounded-full text-black shadow'>
+                            <input type="text" placeholder='Search' onChange={e => setSearch(e.target.value)} value={search} className='outline-none border-0 bg-transparent' />
                             <button><BiSearchAlt /></button>
                         </div>
                     </div>
