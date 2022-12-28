@@ -1,9 +1,13 @@
 import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs'
+import { useState } from 'react'
+import { New } from './New'
 
-export const Header = () => {
+export const Header = ({ reload }: any) => {
+    const [open, setOpen] = useState(false)
+
     return (
-        <header className='w-full'>
-            <div className='flex justify-between items-center py-4 px-8 text-black dark:text-white'>
+        <header className='w-full text-black dark:text-white'>
+            <div className='flex justify-between items-center py-4 px-8 '>
                 <p className='text-lg font-bold capitalize tracking-wider'>go rest</p>
                 <nav>
                     <ul className='flex items-center gap-4'>
@@ -13,11 +17,12 @@ export const Header = () => {
                             </button>
                         </li>
                         <li>
-                            <a href="/"></a>
+                            <button className='p-2 bg-green-500 rounded capitalize tracking-wider cursor-pointer hover:bg-green-600' onClick={() => { setOpen(true) }}>create post</button>
                         </li>
                     </ul>
                 </nav>
             </div>
+            <New open={open} setOpen={setOpen} reload={reload} />
         </header>
     )
 }

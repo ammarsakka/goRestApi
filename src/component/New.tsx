@@ -3,27 +3,21 @@ import axios from 'axios'
 import { Module } from './Module'
 
 interface props {
-    post: {
-        id: number,
-        user_id: number,
-        title: string,
-        body: string
-    },
     open: boolean,
     setOpen: any,
     reload: any
 }
 
-export const Update = ({ post, open, setOpen, reload }: props) => {
-    const [title, setTitle] = useState(post.title)
-    const [body, setBody] = useState(post.body)
+export const New = ({ open, setOpen, reload }: props) => {
+    const [title, setTitle] = useState('')
+    const [body, setBody] = useState('')
 
-    const handleUpdate = () => {
-        axios.put(
-            `https://gorest.co.in/public/v2/posts/${post.id}`,
+    const handleAdd = () => {
+        axios.post(
+            `https://gorest.co.in/public/v2/users/5220/posts`,
             {
                 title: title,
-                body: body
+                body: body.slice(0, 500)
             },
             {
                 headers: {
@@ -41,7 +35,7 @@ export const Update = ({ post, open, setOpen, reload }: props) => {
     return (
         <Module open={open}>
             <div>
-                <p className='capitalize tracking-wider text-lg font-semibold pb-4 border-b-2'>update</p>
+                <p className='capitalize tracking-wider text-lg font-semibold pb-4 border-b-2'>new post</p>
                 <div className='mt-4'>
                     <div className='grid gap-4'>
                         <div className='grid gap-2'>
@@ -50,11 +44,11 @@ export const Update = ({ post, open, setOpen, reload }: props) => {
                         </div>
                         <div className='grid gap-2'>
                             <label htmlFor="body" className='capitalize tracking-wider text-lg'>body</label>
-                            <textarea name='body' className='bg-transparent p-2 resize-none' rows={10} onChange={e => setBody(e.target.value)} value={body} placeholder='Post Body'></textarea>
+                            <textarea name='body' className='bg-transparent p-2 resize-none' rows={10} onChange={e => setBody(e.target.value)} value={body} placeholder='Post Body' maxLength={500}></textarea>
                         </div>
                     </div>
                     <div className='flex items-center gap-2 mt-4'>
-                        <button className="w-full py-2 px-4 uppercase bg-green-500 rounded cursor-pointer hover:bg-green-600" onClick={handleUpdate}>update</button>
+                        <button className="w-full py-2 px-4 uppercase bg-green-500 rounded cursor-pointer hover:bg-green-600" onClick={handleAdd}>save</button>
                         <button className="w-full py-2 px-4 uppercase  bg-slate-500 rounded cursor-pointer hover:bg-slate-600" onClick={() => { setOpen(false) }}>cancel</button>
                     </div>
                 </div>
